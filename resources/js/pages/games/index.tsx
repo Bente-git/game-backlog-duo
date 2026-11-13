@@ -38,10 +38,9 @@ export default function Index({ games }: { games: Game[] }) {
     const [search, setSearch] = useState('');
     const form = useForm({ title: '', platform: 'PC' });
 
-
     const visibleGames = games.filter((game) =>
-    game.title.toLowerCase().includes(search.trim().toLowerCase())
-);
+        game.title.toLowerCase().includes(search.trim().toLowerCase())
+    );
 
     const completedCount = games.filter((game) => game.completed).length;
 
@@ -99,6 +98,7 @@ export default function Index({ games }: { games: Game[] }) {
                         Wis zoeken
                     </button>
                 </div>
+                <p>Zichtbaar: {visibleGames.length} van {games.length}</p>
                 {games.length === 0 ? (
                     <p className="gb-empty">Je lijst is leeg. Voeg je eerste game toe.</p>
                 ) : visibleGames.length === 0 ? (
